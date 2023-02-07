@@ -90,7 +90,7 @@ const ActivityDetail = () => {
 
         </div>
         
-        <button className='activity-add-button' onClick={() => setModalShow(true)} dataCy="todo-add-button">+ Tambah</button>
+        <button className='activity-add-button' onClick={() => setModalShow(true)} data-cy="todo-add-button">+ Tambah</button>
       </div>
 
       <div className="content">

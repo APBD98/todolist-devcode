@@ -90,7 +90,7 @@ const TodoItem = (props) => {
   
   return (
     
-    <div className='item-detail' dataCy="todo-item"> 
+    <div className='item-detail' data-cy="todo-item"> 
       <input type="checkbox" className=' ms-5' style={{"width":"25px", "height":"25px"}} onChange={handleChecked} data-cy="todo-item-checkbox"/>
       <span className='priority-rounded' style={styles.rounded} data-cy="todo-item-priority-indicator"></span>
       <div className='d-flex mt-3' style={{"width":"80%"}}>
