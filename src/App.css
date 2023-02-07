@@ -118,6 +118,7 @@
 }
 
 .cards h1{
+  cursor: pointer;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -176,6 +177,7 @@
 
 
 .activity-detail .header-left p{
+  cursor: pointer;
   font-size: 24px;
   padding-top: 10px;
 }
@@ -293,6 +295,9 @@
   border: none;
 }
 
+.item-detail p{
+  cursor: pointer;
+}
 
 
 

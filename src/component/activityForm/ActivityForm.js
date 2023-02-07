@@ -17,9 +17,9 @@ const ActivityForm = () => {
   
 
   return (
-    <div className='activity-form' data-cy="component-untuk-post-new-activity">
-      <p className="activity-title">Activity</p>
-      <button className='activity-add-button' onClick={addActivity}><span>+</span> Tambah</button>
+    <div className='activity-form' >
+      <p className="activity-title" data-cy="header-title">Activity</p>
+      <button className='activity-add-button' onClick={addActivity} data-cy="activity-add-button"><span>+</span> Tambah</button>
     </div>
   )
 }

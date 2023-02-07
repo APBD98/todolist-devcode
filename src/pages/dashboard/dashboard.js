@@ -5,7 +5,7 @@ import ActivityItem from '../activityItem/ActivityItem'
 
 const Dashboard = () => {
   return (
-    <div className='dashboard' data-cy="halaman dashboard">
+    <div className='dashboard'>
         <Header/>
         <ActivityForm/>
         <ActivityItem/>

@@ -90,14 +90,14 @@ const TodoItem = (props) => {
   
   return (
     
-    <div className='item-detail' data-cy="component-untuk-menampilkan-todolist"> 
-      <input type="checkbox" className=' ms-5' style={{"width":"25px", "height":"25px"}} onChange={handleChecked}/>
-      <span className='priority-rounded' style={styles.rounded}></span>
+    <div className='item-detail' dataCy="todo-item"> 
+      <input type="checkbox" className=' ms-5' style={{"width":"25px", "height":"25px"}} onChange={handleChecked} data-cy="todo-item-checkbox"/>
+      <span className='priority-rounded' style={styles.rounded} data-cy="todo-item-priority-indicator"></span>
       <div className='d-flex mt-3' style={{"width":"80%"}}>
-        <h1 className='fs-5 ' style={{textDecoration:isChecked?"line-through":"none", opacity:isChecked?"0.5" : "1"}}>{props.title}</h1>          
-        <p className='ms-3' onClick={handleEditTodoItem}><FontAwesomeIcon icon={faPen} /></p>           
+        <h1 className='fs-5 ' style={{textDecoration:isChecked?"line-through":"none", opacity:isChecked?"0.5" : "1"}} data-cy="todo-title">{props.title}</h1>          
+        <p className='ms-3' onClick={handleEditTodoItem} data-cy="todo-title-edit-button"><FontAwesomeIcon icon={faPen} /></p>           
       </div>
-      <p className='me-2 mt-3' onClick={deleteItemTodo}><FontAwesomeIcon icon={faTrash} /></p>
+      <p className='me-2 mt-3' onClick={deleteItemTodo} data-cy="todo-item-delete-button"><FontAwesomeIcon icon={faTrash} /></p>
 
       <div className="modal">
       {<PutModalItem

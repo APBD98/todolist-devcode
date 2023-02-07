@@ -13,7 +13,7 @@ const ActivityItem = () => {
   },[listActivity])
 
   return (
-    <div className='activity-item' data-cy="component-untuk-mengambil-data-activity">
+    <div className='activity-item' data-cy="activity-item">
       {
         listActivity?.map(todo => (
           <ActivityCard key={todo.id} title={todo.title} id={todo.id} created={todo.created_at} />

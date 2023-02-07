@@ -78,19 +78,19 @@ const ActivityDetail = () => {
 
 
   return (
-    <div className='activity-detail' data-cy="halaman-detail">
+    <div className='activity-detail' data-cy="activity-item">
       <div className="header">
         <div className='header-left'>
-          <p onClick={() => navigate('/')}><FontAwesomeIcon icon={faChevronLeft} /></p>
+          <p onClick={() => navigate('/')}><FontAwesomeIcon icon={faChevronLeft} data-cy="todo-back-button"/></p>
           {
-            isActive ? <input type="text"  onChange={handleSubmit} defaultValue={actvityDetail.title}/> : <h1>{actvityDetail.title}</h1>
+            isActive ? <input type="text"  onChange={handleSubmit} defaultValue={actvityDetail.title} data-cy="todo-title"/> : <h1>{actvityDetail.title}</h1>
           }
           
           <p><FontAwesomeIcon icon={faPen} onClick={handleIsActive}/></p>
 
         </div>
         
-        <button className='activity-add-button' onClick={() => setModalShow(true)}>+ Tambah</button>
+        <button className='activity-add-button' onClick={() => setModalShow(true)} dataCy="todo-add-button">+ Tambah</button>
       </div>
 
       <div className="content">

@@ -17,11 +17,11 @@ const ActivityCard = ({id, title,created}) => {
   }
   
   return (
-    <div className='cards' data-cy="component-card">
-        <h1 onClick={() => navigate(`/${id}`)}>{title}</h1>
+    <div className='cards' data-cy="activity-item">
+        <h1 onClick={() => navigate(`/${id}`)} data-cy="activity-item-title">{title}</h1>
         <div className="footer-card">
-          <p>{dateCreated}</p>
-          <button onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /></button>
+          <p data-cy="activity-item-date">{dateCreated}</p>
+          <button onClick={handleDelete} data-cy="activity-item-delete-button"><FontAwesomeIcon icon={faTrash} /></button>
         </div>
     </div>
   )
