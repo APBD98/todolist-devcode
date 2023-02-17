@@ -9,6 +9,7 @@ import moment from 'moment';
 import MyVerticallyCenteredModal from './Modal';
 import { PostTodoItem } from '../../component/todoItem/PostTodoItem';
 import TodoItem from '../../component/todoItem/ItemDetail';
+import sortImage from '../../assets/image/sort.png'
 
 
 
@@ -18,6 +19,8 @@ const ActivityDetail = () => {
   const [actvityDetail, setActivityDetail] = useState({})
   const [isActive, setIsActive] = useState(false)
   const [listItems, setListItems] = useState([])
+  const [sorting, setSorting] = useState('none')
+  const [sortDisplay, setSortDisplay] = useState(false)
 
   
   const [inputTitleItem, setInputTitleItem] = useState('test')
@@ -74,6 +77,10 @@ const ActivityDetail = () => {
     .then((res) => console.log(res))
     setModalShow(false)
    }
+   const sortingNew = () => {
+    setSorting('none')
+    setTimeout(() => setSortDisplay(false), 300)
+   }
 
 
 
@@ -89,8 +96,32 @@ const ActivityDetail = () => {
           <p><FontAwesomeIcon icon={faPen} onClick={handleIsActive}/></p>
 
         </div>
-        
+        <div data-cy="sort-selection" style={{width:'50px', height:'50px', border:'1px solid grey', borderRadius:'50%', padding:'8px', position:'absolute', top:'15px', right:'180px'}}>
+            <img src={sortImage} alt="sorting" style={{cursor:'pointer'}} 
+            onClick={() => {
+              if(sortDisplay === false){
+                setSortDisplay(true)
+              }else{
+                setSortDisplay(false)
+              }
+            }}/>
+            <div className='sorting' style={{display:sortDisplay?'flex':'none'}}>
+              <button className='sorting-button' data-cy="sort-az" 
+              onClick={() => {
+                setSorting('AZ')
+                setTimeout(() => setSortDisplay(false), 300)
+                }}>AZ</button>
+              <button className='sorting-button' data-cy="sort-za"
+              onClick={() => {
+                setSorting('ZA')
+                setTimeout(() => setSortDisplay(false), 300)
+                }}>ZA</button>
+              <button data-cy="sort-latest" onClick={sortingNew}>Terbaru</button>
+            </div>
+        </div>
+          
         <button className='activity-add-button' onClick={() => setModalShow(true)} data-cy="todo-add-button">+ Tambah</button>
+        
       </div>
 
       <div className="content">
@@ -99,26 +130,43 @@ const ActivityDetail = () => {
           <PostTodoItem handleModal={() => setModalShow(true)}/>
         )
         
-        // listItems?.map((item) => {
-        //   return listItems.length > 0 ?(
-        //     <div className='item-content'>
-        //       <TodoItem key={item.id} title={item.title} id={item.id} />       
-        //     </div>
-            
-        //     ) : (
-        //       <PostTodoItem handleModal={() => setModalShow(true)}/>
-        //     )
-            
-        // })
           }
           <section>
-            {
-              listItems?.map((item) => (
-                <div className='item-content' key={item.id}>
-                  <TodoItem title={item.title} id={item.id} groupId={id}/>       
-                </div>
-              ))
+          {
+              sorting ==='none' &&(
+                listItems?.map((item) => (
+                  <div className='item-content' key={item.id}>
+                    <TodoItem title={item.title} id={item.id} groupId={id}/>       
+                  </div>
+                ))
+              )
             }
+            {
+              sorting ==='AZ' &&(
+                listItems.sort((a, b) =>
+                  a.title > b.title ? 1 : -1,
+                )
+                .map((item) => (
+                  <div className='item-content' key={item.id}>
+                    <TodoItem title={item.title} id={item.id} groupId={id}/>       
+                  </div>
+                ))
+              )
+            }
+
+{
+              sorting ==='ZA' &&(
+                listItems.sort((a, b) =>
+                  a.title > b.title ? -1 : 1,
+                )
+                .map((item) => (
+                  <div className='item-content' key={item.id}>
+                    <TodoItem title={item.title} id={item.id} groupId={id}/>       
+                  </div>
+                ))
+              )
+            }
+            
           </section>
 
         
